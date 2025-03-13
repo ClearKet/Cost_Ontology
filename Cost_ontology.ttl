@@ -1,0 +1,126 @@
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Definizione delle classi
+ex:CostItem rdf:type owl:Class ;
+    rdfs:label "Cost Item" .
+
+ex:Work rdf:type owl:Class ;
+    rdfs:label "Work" .
+
+ex:Activity rdf:type owl:Class ;
+    rdfs:label "Activity" .
+
+# Proprietà per Work (Datatype Properties)
+ex:hasType rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Work ;
+    rdfs:range xsd:string ;
+    rdfs:label "Type" .
+
+ex:hasDimensions rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Work ;
+    rdfs:range xsd:string ;
+    rdfs:label "Dimensions" .
+
+ex:hasGeometry rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Work ;
+    rdfs:range xsd:string ;
+    rdfs:label "Geometry" .
+
+ex:hasPerformance rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Work ;
+    rdfs:range xsd:string ;
+    rdfs:label "Performance" .
+
+ex:hasMaterial rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Work ;
+    rdfs:range xsd:string ;
+    rdfs:label "Material" .
+
+ex:hasCharacterizingResource rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Work ;
+    rdfs:range xsd:string ;
+    rdfs:label "Characterizing Resource" .
+
+ex:hasObject rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Work ;
+    rdfs:range xsd:string ;
+    rdfs:label "Object" .
+
+# Proprietà per Activity (Datatype Properties)
+ex:activityHasType rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Activity ;
+    rdfs:range xsd:string ;
+    rdfs:label "Activity Type" .
+
+ex:activityHasCharacterizingResource rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Activity ;
+    rdfs:range xsd:string ;
+    rdfs:label "Characterizing Resource" .
+
+# Relazioni tra Cost Item, Work e Activity (Object Properties)
+ex:hasWork rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:CostItem ;
+    rdfs:range ex:Work ;
+    rdfs:label "has Work" .
+
+ex:hasActivity rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:CostItem ;
+    rdfs:range ex:Activity ;
+    rdfs:label "has Activity" .
+
+# Esempio di istanze
+ex:CostItem1 rdf:type ex:CostItem ;
+    ex:hasWork ex:Work1 ;
+    ex:hasActivity ex:Activity1 .
+
+ex:Work1 rdf:type ex:Work ;
+    ex:hasType "Load-bearing" ;
+    ex:hasDimensions "30cm" ;
+    ex:hasGeometry "nd" ;
+    ex:hasPerformance "nd" ;
+    ex:hasMaterial "Reinforced Concrete" ;
+    ex:hasCharacterizingResource "Concrete" ;
+    ex:hasObject "Wall" .
+
+ex:Activity1 rdf:type ex:Activity ;
+    ex:activityHasType "Construction" ;
+    ex:activityHasCharacterizingResource "Concrete Mixer, Labour 1, Labour 2, Labour 3" .
+
+# Aggiunta di altri esempi
+ex:CostItem2 rdf:type ex:CostItem ;
+    ex:hasWork ex:Work2 ;
+    ex:hasActivity ex:Activity2 .
+
+ex:Work2 rdf:type ex:Work ;
+    ex:hasType "Load-bearing" ;
+    ex:hasDimensions "30cm" ;
+    ex:hasGeometry "nd" ;
+    ex:hasPerformance "nd" ;
+    ex:hasMaterial "Reinforced Concrete" ;
+    ex:hasCharacterizingResource "Concrete" ;
+    ex:hasObject "Wall" .
+
+ex:Activity2 rdf:type ex:Activity ;
+    ex:activityHasType "Demolition" ;
+    ex:activityHasCharacterizingResource "Jackhammer, Labour 1, Labour 2, Labour 3" .
+
+ex:CostItem3 rdf:type ex:CostItem ;
+    ex:hasWork ex:Work3 ;
+    ex:hasActivity ex:Activity3 .
+
+ex:Work3 rdf:type ex:Work ;
+    ex:hasType "Load-bearing" ;
+    ex:hasDimensions "30cm" ;
+    ex:hasGeometry "nd" ;
+    ex:hasPerformance "nd" ;
+    ex:hasMaterial "Masonry" ;
+    ex:hasCharacterizingResource "Brick, FRP material" ;
+    ex:hasObject "Wall" .
+
+ex:Activity3 rdf:type ex:Activity ;
+    ex:activityHasType "Consolidation" ;
+    ex:activityHasCharacterizingResource "Labour 1, Labour 2, Labour 3" .
